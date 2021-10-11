@@ -101,6 +101,6 @@ LOGGING = {
     },
 }
 
-LOGGER = "fxt.dev" if DEBUG else "fxt.syslog"
-EXCEPTLOGGER = "fxt.except"
+LOGGER = "snet.dev" if DEBUG else "snet.syslog"
+EXCEPTLOGGER = "snet.except"
 ROOTURLS = "snet.web.root.urls"
