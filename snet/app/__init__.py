@@ -1,9 +1,10 @@
+import snet
 import argparse
 import importlib
-import snet
 import logging
 import importlib
 import logging.config as lconfig
+from tortoise.contrib.aiohttp import register_tortoise
 # import aiohttp_jinja2
 # from jinja2 import FileSystemLoader
 import json
@@ -82,7 +83,7 @@ class SNetService:
         app.middlewares.extend([importlib.import_module(m) for m in settings.MIDDLEWARES])
         app.on_startup.extend([importlib.import_module(m) for m in settings.STARTUP])
         app.on_shutdown.extend([importlib.import_module(m) for m in settings.SHUTDOWN])
-        # register_tortoise(app, config=settings.DATABASE)
+        register_tortoise(app, config=settings.DATABASE, generate_schemas=True)
         Controller.entry_point(settings.ROOTURLS)
         for route in Controller.urls():
             app.router.add_route("*", route.path, route.handler, name=route.name)

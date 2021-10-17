@@ -6,7 +6,7 @@ DEBUG = True
 
 LOG_DIR = BASE_DIR.parent.absolute() / ".log"
 
-
+# if sys.platform != "linux" and not LOG_DIR.exists():
 if not LOG_DIR.exists():
     os.makedirs(LOG_DIR)
 
@@ -16,28 +16,32 @@ SHUTDOWN = []
 TASKS = []
 DATABASE = {
     "connections": {
-        "default": {
-            "engine": "tortoise.backends.asyncpg",
-            "credentials": {
-                "host": "127.0.0.1",
-                "port": 5432,
-                "user": "snet",
-                "password": "Kakoy to parol",
-                "database": "snet_data",
-                "minsize": 50,
-                "maxsize": 90 if DEBUG else 190, 
-            }
-        }
+        "default": f"sqlite://{BASE_DIR}/db.sqlite"
+        # "default": {
+        #     "engine": "tortoise.backends.asyncpg",
+        #     "credentials": {
+        #         "host": "127.0.0.1",
+        #         "port": 5432,
+        #         "user": "snet",
+        #         "password": "Kakoy to parol",
+        #         "database": "snet_data",
+        #         "minsize": 50,
+        #         "maxsize": 90 if DEBUG else 190, 
+        #     }
+        # }
     },
     "apps": {
-        #
+        "user": {
+            "models": ["snet.store.user_models"],
+            "default_connection": "default",
+        }
     },
     "timezone": "UTC",
 }
 
 LOGGING = {
     "version": 1,
-    "disable_existing_loggers": True,
+    "disable_existing_loggers": False,
     "formatters": {
         "standard": {"format": "[%(asctime)s] # %(levelname)s %(message)s"},
         "extended": {
