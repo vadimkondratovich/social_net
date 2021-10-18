@@ -52,7 +52,7 @@ LOGGING = {
         },
         "json": {
             "format": (
-                '{"_level": "%(levelname)s", "time": "%(asctime)s", "_thread": '
+                '{"_level": "%(levelname)s", "_time": "%(asctime)s", "_thread": '
                 '%(thread)d, "_file": "%(pathname)s", "_func": "%(funcname)s()",'
                 ' "_line": %(lineno)d, "_message": "%(message)s", "_name": "%(name)s"}'
             )
@@ -80,7 +80,7 @@ LOGGING = {
             "encoding": "utf8",
         },
         "except": {
-            "class": "lpgging.handlers.SysLogHandler",
+            "class": "logging.handlers.SysLogHandler",
             "formatter": "extended",
             "address": "/dev/log",
             "facility": "local1",

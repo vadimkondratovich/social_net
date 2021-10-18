@@ -17,7 +17,6 @@ class BaseSerializer(ABC, LogMixin):
             return False
         return True
 
-
     @abstractmethod
     def clean(self):
         "Validation method"

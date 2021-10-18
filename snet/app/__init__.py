@@ -1,13 +1,12 @@
+import json
 import snet
 import argparse
-import importlib
 import logging
 import importlib
 import logging.config as lconfig
 from tortoise.contrib.aiohttp import register_tortoise
 # import aiohttp_jinja2
 # from jinja2 import FileSystemLoader
-import json
 from aiohttp import web
 from datetime import date
 from typing import TypeVar
@@ -16,6 +15,7 @@ from snet.urls.route import Controller
 
 Args = TypeVar("Args")
 AiohttpApp = TypeVar("AiohttpApp")
+
 
 class SNetService:
     @staticmethod
@@ -64,7 +64,7 @@ class SNetService:
             "--tasks",
             dest="tasks",
             action="store_true",
-            help="Run bg tasks",
+            help="Run bg tasks.",
         )
         parser.add_argument(
             "-w",

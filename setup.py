@@ -1,5 +1,4 @@
 import pathlib
-from sys import version
 from typing import List, TypeVar
 from setuptools import setup, find_packages
 
@@ -91,6 +90,6 @@ class Setup:
 Setup().add_version().install(
     "Vadim Kondratovich",
     "vadim.kondratovich1993@gmail.com",
-    "https://github.com/vadimkondratovich/social_net.git",
+    "https://github.com/vadimkondratovich/social_net",
 )
 
